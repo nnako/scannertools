@@ -79,6 +79,9 @@ index=1
 width=210
 height=295
 
+# orientation portrait
+orientation=0
+
 
 
 
@@ -117,7 +120,12 @@ for param in $input_string; do
 
         case $key in
             o)
-                echo "not implemented";;
+                case $value in
+                    0)
+                        declare "orientation=0";;
+                    1)
+                        declare "orientation=270";;
+                esac;;
 
             t)
                 case $value in
@@ -192,6 +200,11 @@ for param in $input_string; do
         convert scan_$index.pnm -ordered-dither o8x8 scan_$index.png
     else
         convert scan_$index.pnm scan_$index.png
+    fi
+
+    # rotate 90 degrees clockwise
+    if [[ $o == 1 ]]; then
+        convert scan_$index.png -rotate $orientation scan_$index.png
     fi
 
     # remove original file
