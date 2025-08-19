@@ -182,11 +182,7 @@ for param in $input_string; do
     # like dithering.
 
     # wait for user to place the document
-    read -p "PLEASE PUT PAGE#$i ONTO THE FLATBED" -n1
-
-    # exchange width and height
-    #if [[ $o == 1 ]]; then
-    #fi
+    read -p "PLEASE PUT PAGE#$index ONTO THE FLATBED" -n1
 
     # scan original
     if [[ $t == 1 ]]; then
